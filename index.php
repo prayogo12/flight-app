@@ -16,6 +16,7 @@ Flight::view()->set('menu', array(
 		'icon' => 'ni ni-circle-08',
 		'text' => 'Users'
 	),
+  
 ) );
 
 if ( session_status() == PHP_SESSION_NONE ) {
@@ -23,7 +24,7 @@ if ( session_status() == PHP_SESSION_NONE ) {
 }
 
 // set database connection
-Flight::register('db', 'MysqliDb', array( 'localhost', 'root', '', 'deft__learn' ) );
+Flight::register('db', 'MysqliDb', array( 'localhost', 'root', '', 'login2' ) );
 
 Flight::route('/', function(){
 	if ( !isset( $_SESSION['user'] ) ) {
@@ -35,4 +36,8 @@ Flight::route('/', function(){
     Flight::render( 'dashboard', array( 'name' => $_SESSION['user'] ) );
 });
 
+//Flight::route('/users/edit', function($r){
+   // Flight::render('edit');
+    //echo $r;
+//});
 Flight::start();
